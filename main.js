@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
  // Store all about section data in one place
  const aboutData = {
     profile: {
-        image: "https://karamveer2648.github.io/mahaprojectimagerepo/Karamveer.png",
+        image: "Karamveer.png",
         badges: {
             primary: "CSE Engineer",
             secondary: "AI Enthusiast"
