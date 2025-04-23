@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="theme-color" content="#0055ff">
-    <meta property="og:title" content="Karamveer Singh Oberoi | AI/ML Engineer & Web Developer" />
-    <meta property="og:description" content="Portfolio of Karamveer Singh Oberoi - AI/ML Enthusiast, Web Developer, and Cloud Advocate" />
-    <meta property="og:url" content="https://karamveersinghoberoi.me/" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://karamveersinghoberoi.me/logo-png.png" /> <!-- Optional: Add preview image -->
-  
-    <!-- Twitter Card (for Twitter-specific previews) -->
+    <meta name="description" content="Karamveer Singh Oberoi - AI/ML Engineer & Web Developer. Explore my portfolio showcasing my skills, projects, and experience in the tech industry.">
+    <meta name="keywords" content="portfolio, AI, ML, web developer, Java, Python, Django, IBM Cloud">
+    <meta name="author" content="Karamveer Singh Oberoi">
+    <meta property="og:title" content="Karamveer Singh Oberoi | AI/ML Engineer & Web Developer">
+    <meta property="og:description" content="Portfolio of Karamveer Singh Oberoi - AI/ML Enthusiast, Web Developer, and Cloud Advocate">
+    <meta property="og:url" content="https://karamveersinghoberoi.me/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://karamveer2648.github.io/MahaPowerImagesStoring/logo-png.webp">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Karamveer Singh Oberoi | AI/ML Engineer & Web Developer">
     <meta name="twitter:description" content="Portfolio of Karamveer Singh Oberoi - AI/ML Enthusiast, Web Developer, and Cloud Advocate">
-    <meta name="twitter:image" content="https://karamveersinghoberoi.me/path-to-preview-image.png"> <!-- Optional -->
+    <meta name="twitter:image" content="https://karamveer2648.github.io/MahaPowerImagesStoring/logo-png.webp">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="mobile-web-app-capable" content="yes">
@@ -24,13 +25,8 @@
     <meta name="msapplication-TileColor" content="#0055ff">
     <meta name="msapplication-TileImage" content="logo-png.png">
     <meta name="msapplication-config" content="browserconfig.xml">
-    <meta name="theme-color" content="#0055ff">
     <meta name="viewport-fit" content="cover">
-    <meta name="description" content="Karamveer Singh Oberoi - AI/ML Engineer & Web Developer. Explore my portfolio showcasing my skills, projects, and experience in the tech industry.">
     <title>Karamveer Singh Oberoi | AI/ML Engineer & Web Developer</title>
-    <meta name="description" content="Portfolio of Karamveer Singh Oberoi - AI/ML Enthusiast, Web Developer, and Cloud Advocate">
-    <meta name="keywords" content="portfolio, AI, ML, web developer, Java, Python, Django, IBM Cloud">
-    <meta name="author" content="Karamveer Singh Oberoi">
     
     <!-- Favicon -->
     <link rel="icon" href="logo-png.png" type="image/png">
@@ -54,8 +50,8 @@
                         poppins: ['Poppins', 'sans-serif'],
                     },
                     animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        float: 'float 6s ease-in-out infinite',
+                        pulseSlow: 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     },
                     keyframes: {
                         float: {
@@ -81,17 +77,14 @@
             color: #0f172a;
         }
         .dark body {
-            background-color:#0f172a;
-            color:  #f8fafc; 
+            background-color: #0f172a;
+            color: #f8fafc;
         }
         .gradient-text {
             background: linear-gradient(90deg, #0055ff, #00aaff);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-        }
-        .nav-link {
-            position: relative;
         }
         .nav-link::after {
             content: '';
@@ -108,25 +101,6 @@
         }
         .skill-bar {
             transition: width 2s ease-in-out;
-        }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -20px;
-            top: 0;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: linear-gradient(90deg, #0055ff, #00aaff);
-        }
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: -16px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, #0055ff, #00aaff);
         }
         .project-card:hover {
             transform: translateY(-10px);
@@ -149,27 +123,27 @@
 
     <!-- Header -->
     <header class="fixed w-full z-40 bg-white/80 dark:bg-dark/80 backdrop-blur-md shadow-sm">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <a href="index.html" class="flex items-center justify-center">
-                    <div class="h-12 w-12 rounded-full overflow-hidden bg-white dark:bg-gray-800 border-2 border-primary dark:border-accent shadow-md flex items-center justify-center">
-                        <img src="logo-png.png" alt="KSO Logo" class="h-8 w-8 object-contain">
-                    </div>
-                </a>
-                
-                <!-- Desktop Navigation -->
-                <nav class="hidden md:flex space-x-8">
-                    <a href="#home" class="nav-link">Home</a>
-                    <a href="#about" class="nav-link">About</a>
-                    <a href="#skills" class="nav-link">Skills</a>
-                    <a href="#experience" class="nav-link">Experience</a>
-                    <a href="#projects" class="nav-link">Projects</a>
-                    <a href="#certifications" class="nav-link">Certifications</a>
-                    <a href="#contact" class="nav-link">Contact</a>
-                </nav>
-                
-                <!-- Dark Mode Toggle -->   
-                
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center">
+                <div class="h-12 w-12 rounded-full bg-white dark:bg-gray-800 border-2 border-primary dark:border-accent shadow-md flex items-center justify-center">
+                    <img src="https://karamveer2648.github.io/MahaPowerImagesStoring/logo-png.webp" alt="KSO Logo" class="h-8 w-8 object-contain">
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#certifications" class="nav-link">Certifications</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden focus:outline-none"></button>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"></svg>
                 <!-- Mobile Menu Button -->
                 <button id="mobile-menu-button" class="md:hidden focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -273,7 +247,7 @@
                         
                         <!-- Main image container -->
                         <div class="relative w-72 h-72 md:w-96 md:h-96 rounded-3xl overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
-                            <img src="Karamveer.png" alt="Karamveer Singh Oberoi" class="w-full h-full object-cover">
+                            <img src="https://karamveer2648.github.io/MahaPowerImagesStoring/Karamveer.webp" alt="Karamveer Singh Oberoi" class="w-full h-full object-cover">
                         
                             <!-- Overlay gradient -->
                             <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-30"></div>

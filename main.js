@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
  // Store all about section data in one place
  const aboutData = {
     profile: {
-        image: "Karamveer.png",
+        image: "https://karamveer2648.github.io/MahaPowerImagesStoring/Karamveer.webp",
         badges: {
             primary: "CSE Engineer",
             secondary: "AI Enthusiast"
@@ -887,7 +887,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 organization: "P. R. Pote Patil Group",
                 date: "May 2024",
                 description: "Clinched 3rd place, winning ₹11,000! Competed against 200+ teams with our project 'Smart Education: Annual Report Portal'.",
-                image: "https://ayushchainani.me/media/IMG_4113.JPG",
+                image: "https://karamveer2648.github.io/MahaPowerImagesStoring/adad.webp",
                 badgeType: "ribbon",
                 badgeText: "3RD PLACE",
                 badgeColor: "primary",
@@ -902,7 +902,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 organization: "Amity University Mumbai",
                 date: "May 2024",
                 description: "Selected in top 50 out of 1000+ teams! Developed Mediac, an innovative web application using Django, HTML, CSS and cloud database.",
-                image: "amity.jpg",
+                image: "https://karamveer2648.github.io/MahaPowerImagesStoring/amity.webp",
                 badgeType: "circle",
                 badgeText: "TOP 50",
                 badgeColor: "indigo",
@@ -917,7 +917,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 organization: "Internal Selection",
                 date: "2024",
                 description: "Both problem statements selected! Our team tackled AI-ML models for predicting agricultural prices and an alumni-student connection platform.",
-                image: "sih.jpg",
+                image: "https://karamveer2648.github.io/MahaPowerImagesStoring/sih.webp",
                 badgeType: "pill",
                 badgeText: "Double Selection",
                 badgeColor: "green",
