@@ -539,61 +539,33 @@ document.addEventListener('DOMContentLoaded', function() {
     animateSkillBars(document.querySelector('.tab-content.active'));
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Get references to all needed DOM elements
+document.addEventListener('DOMContentLoaded', () => {
     const slider = document.getElementById('timeline-slider');
     const prevBtn = document.getElementById('prev-timeline');
     const nextBtn = document.getElementById('next-timeline');
     const progress = document.getElementById('timeline-progress');
     const items = document.querySelectorAll('.timeline-item');
-    let currentIndex = 0; // Track the current active item
-    
-    /**
-     * Updates the progress bar width based on the current scroll position
-     * Calculates percentage scrolled through the available scroll area
-     */
-    function updateProgress() {
+    let currentIndex = 0;
+
+    const updateProgress = () => {
         if (slider && progress) {
-            const scrollPosition = slider.scrollLeft;
-            const maxScroll = slider.scrollWidth - slider.clientWidth;
-            const percentage = (scrollPosition / maxScroll) * 100;
+            const percentage = (slider.scrollLeft / (slider.scrollWidth - slider.clientWidth)) * 100;
             progress.style.width = `${percentage}%`;
         }
-    }
-    
-    /**
-     * Scrolls the timeline to center a specific item
-     * @param {number} index - The index of the item to scroll to
-     */
-    function scrollToItem(index) {
+    };
+
+    const scrollToItem = (index) => {
         if (index >= 0 && index < items.length && slider) {
-            currentIndex = index; // Update current index tracker
+            currentIndex = index;
             items[index].scrollIntoView({ behavior: 'smooth', inline: 'center' });
-            // Small delay to allow the scroll animation to start before updating progress
             setTimeout(updateProgress, 300);
         }
-    }
-    
-    // Set up previous button click handler - move backward in timeline
-    if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-            scrollToItem(Math.max(0, currentIndex - 1)); // Prevent going below index 0
-        });
-    }
-    
-    // Set up next button click handler - move forward in timeline
-    if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-            scrollToItem(Math.min(items.length - 1, currentIndex + 1)); // Prevent exceeding max index
-        });
-    }
-    
-    // Update progress indicator when user manually scrolls the timeline
-    if (slider) {
-        slider.addEventListener('scroll', updateProgress);
-    }
-    
-    // Initialize the progress indicator on page load
+    };
+
+    prevBtn?.addEventListener('click', () => scrollToItem(Math.max(0, currentIndex - 1)));
+    nextBtn?.addEventListener('click', () => scrollToItem(Math.min(items.length - 1, currentIndex + 1)));
+    slider?.addEventListener('scroll', updateProgress);
+
     updateProgress();
 });
 
@@ -749,8 +721,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // Set "All" filter as active by default on page load
-        document.querySelector('.filter-btn[data-filter="all"]').classList.add('active-filter', 'bg-white', 'dark:bg-gray-700', 'text-primary', 'dark:text-accent', 'shadow-md');
-        
+        document.querySelector('.filter-btn[data-filter="web-dev"]').classList.add('active-filter', 'bg-white', 'dark:bg-gray-700', 'text-primary', 'dark:text-accent', 'shadow-md');
+        document.querySelectorAll('.project-item').forEach(item => {
+            if (item.classList.contains('web-dev')) {
+            item.style.display = '';
+            item.style.opacity = '1';
+            item.style.transform = 'scale(1)';
+            } else {
+            item.style.display = 'none';
+            }
+        });
         // Set transition properties for smooth animations
         projectItems.forEach(item => {
             item.style.transition = 'opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease';
@@ -765,132 +745,132 @@ document.addEventListener('DOMContentLoaded', function() {
         // Sample project data structured as an array of project objects
         return Promise.resolve([
             {
-                title: "Doctor Visit Insights",
-                description: "Comprehensive analysis of doctor visit data to gain actionable insights for improving healthcare operations and patient care.",
-                date: "Oct 2024",
-                type: "Healthcare Data",
-                categories: ["data-analytics"],
-                skills: [
-                    { name: "Pandas", color: "blue" },
-                    { name: "Matplotlib", color: "green" },
-                    { name: "Data Viz", color: "purple" }
-                ],
-                link: "https://github.com/karamveer2648/Doctor_Visit_Analysis",
-                linkText: "GitHub Repo",
-                headerColor: { from: "blue-500", to: "indigo-600" },
-                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>'
+            title: "Doctor Visit Insights",
+            description: "Comprehensive analysis of doctor visit data to gain actionable insights for improving healthcare operations and patient care.",
+            date: "Oct 2024",
+            type: "Healthcare Data",
+            categories: ["data-analytics"],
+            skills: [
+                { name: "Pandas", color: "blue" },
+                { name: "Matplotlib", color: "green" },
+                { name: "Data Viz", color: "purple" }
+            ],
+            link: "https://github.com/karamveer2648/Doctor_Visit_Analysis",
+            linkText: "GitHub Repo",
+            headerColor: { from: "blue-500", to: "indigo-600" },
+            icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>'
             },
             {
-                title: "Superstore Sales Analysis",
-                description: "In-depth analysis of superstore sales data revealing critical insights for business strategy and growth.",
-                date: "Oct 2024",
-                type: "Retail Analytics",
-                categories: ["data-analytics"],
-                skills: [
-                    { name: "Pandas", color: "blue" },
-                    { name: "Seaborn", color: "teal" },
-                    { name: "BI", color: "amber" }
-                ],
-                link: "https://github.com/karamveer2648/SuperstoreDataAnalysis",
-                linkText: "GitHub Repo",
-                headerColor: { from: "green-500", to: "teal-600" },
-                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>'
+            title: "Superstore Sales Analysis",
+            description: "In-depth analysis of superstore sales data revealing critical insights for business strategy and growth.",
+            date: "Oct 2024",
+            type: "Retail Analytics",
+            categories: ["data-analytics"],
+            skills: [
+                { name: "Pandas", color: "blue" },
+                { name: "Seaborn", color: "teal" },
+                { name: "BI", color: "amber" }
+            ],
+            link: "https://github.com/karamveer2648/SuperstoreDataAnalysis",
+            linkText: "GitHub Repo",
+            headerColor: { from: "green-500", to: "teal-600" },
+            icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>'
             },
             {
-                title: "AWS S3 Portfolio",
-                description: "Static portfolio website deployment using Amazon S3 with complete cloud configuration.",
-                date: "Oct 2024",
-                type: "Cloud Implementation",
-                categories: ["cloud", "web-dev"],
-                skills: [
-                    { name: "AWS S3", color: "orange" },
-                    { name: "Static Site", color: "blue" },
-                    { name: "Cloud", color: "indigo" }
-                ],
-                link: "#",
-                linkText: "Project Details",
-                headerColor: { from: "orange-500", to: "yellow-400" },
-                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path>'
+            title: "AWS S3 Portfolio",
+            description: "Static portfolio website deployment using Amazon S3 with complete cloud configuration.",
+            date: "Oct 2024",
+            type: "Cloud Implementation",
+            categories: ["cloud", "web-dev"],
+            skills: [
+                { name: "AWS S3", color: "orange" },
+                { name: "Static Site", color: "blue" },
+                { name: "Cloud", color: "indigo" }
+            ],
+            link: "#",
+            linkText: "Project Details",
+            headerColor: { from: "orange-500", to: "yellow-400" },
+            icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path>'
             },
             {
-                title: "बाईकमहिती.काॅम",
-                description: "E-commerce platform for motorcycle enthusiasts with detailed specs, reviews and community forums.",
-                date: "Jan 2023",
-                type: "E-Commerce Platform",
-                categories: ["web-dev"],
-                skills: [
-                    { name: "PHP", color: "indigo" },
-                    { name: "MySQL", color: "cyan" },
-                    { name: "JavaScript", color: "yellow" }
-                ],
-                link: "#",
-                linkText: "View Project",
-                headerColor: { from: "red-500", to: "pink-600" },
-                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>'
+            title: "बाईकमहिती.काॅम",
+            description: "E-commerce platform for motorcycle enthusiasts with detailed specs, reviews and community forums.",
+            date: "Jan 2023",
+            type: "E-Commerce Platform",
+            categories: ["web-dev"],
+            skills: [
+                { name: "PHP", color: "indigo" },
+                { name: "MySQL", color: "cyan" },
+                { name: "JavaScript", color: "yellow" }
+            ],
+            link: "#",
+            linkText: "View Project",
+            headerColor: { from: "red-500", to: "pink-600" },
+            icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>'
             },
             {
-                title: "Chennai Point (Bootstrap)",
-                description: "City guide website showcasing local businesses, attractions and services using Bootstrap framework.",
-                date: "Jul 2022",
-                type: "City Guide Website",
-                categories: ["web-dev"],
-                skills: [
-                    { name: "HTML", color: "orange" },
-                    { name: "Bootstrap", color: "indigo" },
-                    { name: "JavaScript", color: "yellow" }
-                ],
-                link: "https://primachennai.netlify.app/",
-                linkText: "Visit Website",
-                headerColor: { from: "purple-500", to: "indigo-600" },
-                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>'
+            title: "Chennai Point (Bootstrap)",
+            description: "City guide website showcasing local businesses, attractions and services using Bootstrap framework.",
+            date: "Jul 2022",
+            type: "City Guide Website",
+            categories: ["web-dev"],
+            skills: [
+                { name: "HTML", color: "orange" },
+                { name: "Bootstrap", color: "indigo" },
+                { name: "JavaScript", color: "yellow" }
+            ],
+            link: "https://primachennai.netlify.app/",
+            linkText: "Visit Website",
+            headerColor: { from: "purple-500", to: "indigo-600" },
+            icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>'
             },
             {
-                title: "Chennai Point (Custom CSS)",
-                description: "Advanced version of city guide with custom CSS implementation demonstrating deep styling capabilities.",
-                date: "Aug 2022",
-                type: "Custom CSS Implementation",
-                categories: ["web-dev"],
-                skills: [
-                    { name: "HTML", color: "orange" },
-                    { name: "Pure CSS", color: "blue" },
-                    { name: "JavaScript", color: "yellow" }
-                ],
-                link: "https://primachennaipoint.netlify.app/",
-                linkText: "Visit Website",
-                headerColor: { from: "cyan-500", to: "indigo-600" },
-                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>'
+            title: "Chennai Point (Custom CSS)",
+            description: "Advanced version of city guide with custom CSS implementation demonstrating deep styling capabilities.",
+            date: "Aug 2022",
+            type: "Custom CSS Implementation",
+            categories: ["web-dev"],
+            skills: [
+                { name: "HTML", color: "orange" },
+                { name: "Pure CSS", color: "blue" },
+                { name: "JavaScript", color: "yellow" }
+            ],
+            link: "https://primachennaipoint.netlify.app/",
+            linkText: "Visit Website",
+            headerColor: { from: "cyan-500", to: "indigo-600" },
+            icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>'
             },
             {
-                title: "Smart Education Portal",
-                description: "Annual report management solution for educational institutes with dynamic reporting features.",
-                date: "May 2024",
-                type: "Educational Technology",
-                categories: ["web-dev"],
-                skills: [
-                    { name: "Django", color: "green" },
-                    { name: "Python", color: "blue" },
-                    { name: "Charts.js", color: "red" }
-                ],
-                link: "#",
-                linkText: "Project Details",
-                headerColor: { from: "emerald-500", to: "green-600" },
-                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>'
+            title: "Smart Education Portal",
+            description: "Annual report management solution for educational institutes with dynamic reporting features.",
+            date: "May 2024",
+            type: "Educational Technology",
+            categories: ["web-dev"],
+            skills: [
+                { name: "Django", color: "green" },
+                { name: "Python", color: "blue" },
+                { name: "Charts.js", color: "red" }
+            ],
+            link: "#",
+            linkText: "Project Details",
+            headerColor: { from: "emerald-500", to: "green-600" },
+            icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>'
             },
             {
-                title: "Mediac Health Platform",
-                description: "Web application connecting patients with healthcare providers for streamlined medical appointments.",
-                date: "May 2024",
-                type: "Healthcare Solution",
-                categories: ["web-dev", "cloud"],
-                skills: [
-                    { name: "Django", color: "green" },
-                    { name: "AWS", color: "yellow" },
-                    { name: "Database", color: "blue" }
-                ],
-                link: "#",
-                linkText: "View Project",
-                headerColor: { from: "blue-400", to: "sky-600" },
-                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>'
+            title: "Mediac Health Platform",
+            description: "Web application connecting patients with healthcare providers for streamlined medical appointments.",
+            date: "May 2024",
+            type: "Healthcare Solution",
+            categories: ["web-dev", "cloud"],
+            skills: [
+                { name: "Django", color: "green" },
+                { name: "AWS", color: "yellow" },
+                { name: "Database", color: "blue" }
+            ],
+            link: "#",
+            linkText: "View Project",
+            headerColor: { from: "blue-400", to: "sky-600" },
+            icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>'
             }
         ]);
     }
@@ -1065,7 +1045,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 // End of Achievements Section
-
 //start of certifications section
 /**
  * Certifications Section
@@ -1160,6 +1139,7 @@ document.addEventListener('DOMContentLoaded', function() {
             issuer: "IBM",
             date: "July 2024",
             category: "data",
+            color: "#0043ce",
             color: "#0043ce",
             icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>',
             tags: [{name: "Data Science", color: "blue"}, {name: "Data Visualization", color: "indigo"}, {name: "Watson Studio", color: "cyan"}],
