@@ -662,6 +662,8 @@ document.addEventListener('DOMContentLoaded', function() {
             // This creates a cascading reveal effect for the projects
             projectItem.setAttribute('data-aos-delay', (index % 4) * 100 + 100);
             
+
+    
             // Append the completed project card to the container
             container.appendChild(projectCard);
         });
