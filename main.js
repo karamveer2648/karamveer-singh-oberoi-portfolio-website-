@@ -1,3 +1,4 @@
+
 // Wait for the DOM to be fully loaded before executing code
 document.addEventListener('DOMContentLoaded', function() {
     // Get the element where typing animation will be displayed
