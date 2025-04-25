@@ -27,7 +27,8 @@
     <meta name="msapplication-config" content="browserconfig.xml">
     <meta name="viewport-fit" content="cover">
     <meta name="robots" content="index, follow">
-    <link rel="preload" href="main.js" as="script">
+    <script src="main.js" defer></script>
+
     <title>Karamveer Singh Oberoi | AI/ML Engineer & Web Developer</title>
     
     <!-- Favicon -->
@@ -128,7 +129,7 @@
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="index.html" class="flex items-center">
                 <div class="h-12 w-12 rounded-full bg-white dark:bg-gray-800 border-2 border-primary dark:border-accent shadow-md flex items-center justify-center">
-                    <img src="https://karamveer2648.github.io/MahaPowerImagesStoring/logo-png.webp" alt="KSO Logo" class="h-8 w-8 object-contain">
+                    <img src="https://karamveer2648.github.io/MahaPowerImagesStoring/logo-png.webp" alt="KSO Logo" class="h-8 w-8 object-contain" loading="lazy">
                 </div>
             </a>
 
@@ -255,7 +256,7 @@
                         
                         <!-- Main image container -->
                         <div class="relative w-72 h-72 md:w-96 md:h-96 rounded-3xl overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
-                            <img src="https://karamveer2648.github.io/MahaPowerImagesStoring/Karamveer.webp" alt="Karamveer Singh Oberoi" class="w-full h-full object-cover">
+                            <img src="https://karamveer2648.github.io/MahaPowerImagesStoring/Karamveer.webp" alt="Karamveer Singh Oberoi" class="w-full h-full object-cover" loading="lazy">
                         
                             <!-- Overlay gradient -->
                             <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-30"></div>
@@ -290,7 +291,6 @@
             </div>
         </div>
     </section>
-
     <!-- About Section -->
     <section id="about" class="py-20 bg-gray-50 dark:bg-gray-900 relative overflow-hidden">
         <!-- Animated background elements -->
@@ -319,7 +319,7 @@
                         <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl transform rotate-3 group-hover:rotate-6 transition-transform duration-500"></div>
                         
                         <div class="relative w-72 h-80 md:h-96 rounded-2xl overflow-hidden shadow-2xl transform -rotate-2 group-hover:rotate-0 transition-all duration-500 border-4 border-white dark:border-gray-800">
-                            <img id="profile-image" src="" alt="Karamveer Singh Oberoi" class="w-full h-full object-cover">
+                            <img id="profile-image" src="" alt="Karamveer Singh Oberoi" class="w-full h-full object-cover" loading="lazy">
                             
                             <!-- Overlay with gradient -->
                             <div class="absolute inset-0 bg-gradient-to-t from-dark/50 to-transparent opacity-40"></div>
@@ -395,12 +395,12 @@
                     </div>
                     
                     <!-- CTA Button with Creative Design -->
-                    <div class="mt-8" data-aos="fade-up">
+                    <div class="mt-8" data-aos="fade-up"></div>
                         <a id="resume-link" href="Karamveer Singh Oberoi Resume.pdf" class="group relative inline-flex items-center px-8 py-4 bg-white dark:bg-gray-800 text-primary dark:text-accent border-2 border-primary dark:border-accent rounded-lg font-medium overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
                             <span class="absolute left-0 top-0 h-full w-0 bg-gradient-to-r from-primary to-accent group-hover:w-full transition-all duration-400 opacity-80"></span>
                             <span class="relative flex items-center justify-center group-hover:text-white transition-colors duration-200">
                                 Download Complete Resume
-                                <svg class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <svg class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"></svg>
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                                 </svg>
                             </span>
@@ -1570,7 +1570,6 @@
         window.addEventListener('load', animateSkillBars);
     </script>
 
-    <script  src="main.js"></script>
 <script>
     (function () {
         const toggleBtn = document.getElementById('theme-toggle');
